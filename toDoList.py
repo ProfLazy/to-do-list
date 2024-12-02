@@ -3,7 +3,9 @@ import time
 
 userInfo = {
     "taskCounter" : 0,
-    "Name" : "wasd"
+    "Name" : "wasd",
+    "completedTasks": [],
+    "numberCompleted": 0
 }
 
 def main():
@@ -22,7 +24,7 @@ def main():
         elif userInput == '2':
             viewTask()
         elif userInput == '3':
-            type(userInput)
+            taskCompleted()
         elif userInput == '4':
             type(userInput)
         elif userInput == '5':
@@ -60,13 +62,36 @@ def addTask():
     time.sleep(1)
 
 def viewTask():
-    print("User:" + userInfo["Name"])
+    print("\n")
+    print("User: " + userInfo["Name"])
     print("Tasks:")
     for key,value in userInfo.items():
         if key.startswith("Task"):
             print(key + ": " + value)
     print("\n")
+    print("Completed Tasks:")
+    if not userInfo["completedTasks"]:
+        print("NONE\n")
+    else:
+        for i in range(0 , len(userInfo["completedTasks"])):
+            print(userInfo["completedTasks"][i] + "\n")
+    time.sleep(2)
+
+def taskCompleted():
+    print("\n")
+    print("Enter Task Number Completed: ")
+    taskInput = input()
+    taskKey = f"Task {taskInput}"
+
+    if taskKey in userInfo:
+        completed_task = userInfo.pop(taskKey)
+        userInfo["completedTasks"].append(completed_task)
+        userInfo["numberCompleted"] += 1
+        print(f"Task {taskInput} marked as completed.\n")
+    else:
+        print(f"Task {taskInput} not found.\n")
     time.sleep(1)
+
 
 
 if __name__ == "__main__":
