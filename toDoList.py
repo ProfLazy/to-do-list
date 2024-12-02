@@ -1,4 +1,5 @@
 import os
+import time
 
 userInfo = {
     "Name": "",
@@ -9,7 +10,36 @@ def main():
     userInfo["Name"] = input()
     print(f"Hello {userInfo['Name']}")
 
-    print(userInputHandler())
+    whileControl = 0
+
+
+    while whileControl != 1:
+        userInput = userInputHandler()
+
+        if type(userInput) == str:
+            invalidInput()
+        elif userInput == 1:
+            type(userInput)
+        elif userInput == 2:
+            type(userInput)
+        elif userInput == 3:
+            type(userInput)
+        elif userInput == 4:
+            type(userInput)
+        elif userInput == 5:
+            type(userInput)
+        elif userInput == 6:
+            whileControl = 1
+        else:
+            invalidInput()
+
+def invalidInput():
+    print("Please select a valid input")
+    time.sleep(1)
+
+def addTask():
+    
+    
 
 
 def userInputHandler():
@@ -24,7 +54,7 @@ def userInputHandler():
     print("5. Delete a task")
     print("6. Exit \n")
 
-    userInput = int(input())
+    userInput = input()
 
     return userInput
 
