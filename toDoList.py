@@ -59,6 +59,9 @@ def addTask():
     print("\n")
     time.sleep(1)
 
+def viewTask():
+    type()
+
 
 if __name__ == "__main__":
     main()
