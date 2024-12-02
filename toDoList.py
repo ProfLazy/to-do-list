@@ -20,7 +20,7 @@ def main():
         if userInput == "1":
             addTask()
         elif userInput == '2':
-            type(userInput)
+            viewTask()
         elif userInput == '3':
             type(userInput)
         elif userInput == '4':
@@ -60,7 +60,13 @@ def addTask():
     time.sleep(1)
 
 def viewTask():
-    type()
+    print("User:" + userInfo["Name"])
+    print("Tasks:")
+    for key,value in userInfo.items():
+        if key.startswith("Task"):
+            print(key + ": " + value)
+    print("\n")
+    time.sleep(1)
 
 
 if __name__ == "__main__":
