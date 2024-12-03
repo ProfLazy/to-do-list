@@ -26,9 +26,9 @@ def main():
         elif userInput == '3':
             taskCompleted()
         elif userInput == '4':
-            type(userInput)
+            editTask()
         elif userInput == '5':
-            type(userInput)
+            deleteTask()
         elif userInput == '6':
             whileControl = 1
         else:
@@ -106,12 +106,15 @@ def editTask():
             userInfo[taskKey] = editTask
         else:
             userInfo[taskKey] = userEdit
+        for i in range(1, userInfo["taskCounter"] + 1):
+            currTask = f"Task {i}"
+            if currTask in userInfo:
+                reorderTask = userInfo.pop(f"Task {i}")
+                userInfo[f"Task {i}"] = reorderTask
     else:
         print(f"Task {taskInput} not found.\n")
 
-    for i in range(1, userInfo["taskCounter"] + 1):
-        reorderTask = userInfo.pop(f"Task {i}")
-        userInfo[f"Task {i}"] = reorderTask
+    
     
     time.sleep(1)
     print("\n")
@@ -123,8 +126,8 @@ def deleteTask():
     taskKey = f"Task {taskInput}"
 
     if taskKey in userInfo:
-        deleteTask = userInfo.pop(taskKey)
         print( f"Task found. Are you sure you want to delete task \"{userInfo[taskKey]}\"? Y for yes, others for no")
+        deleteTask = userInfo.pop(taskKey)
         userEdit = input()
         if userEdit == "Y":
             del deleteTask
