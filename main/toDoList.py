@@ -1,6 +1,6 @@
 import time
 
-
+# Dictionary to hold the user information
 userInfo = {
     "taskCounter" : 0,
     "Name" : "wasd",
@@ -8,6 +8,7 @@ userInfo = {
     "numberCompleted": 0
 }
 
+# Basic prompt to the user on startup
 def main():
     print("Please enter your name:")
     userInfo["Name"] = input()
@@ -34,6 +35,7 @@ def main():
         else:
             invalidInput()
 
+# Displays the menu of the main program
 def userInputHandler():
 
     # -1 to make sure there is no remnant of the old input
@@ -50,10 +52,12 @@ def userInputHandler():
 
     return userInput
 
+# If there is an invalid input in the starting user input
 def invalidInput():
     print("Please select a valid input \n")
     time.sleep(1)
 
+# Adds a task to the user's list
 def addTask():
     print("Okay, enter your task")
     userInfo["taskCounter"] += 1
@@ -61,6 +65,7 @@ def addTask():
     print("\n")
     time.sleep(1)
 
+# Allows the user to view their tasks
 def viewTask():
     print("\n")
     print("User: " + userInfo["Name"])
@@ -77,6 +82,7 @@ def viewTask():
             print(userInfo["completedTasks"][i] + "\n")
     time.sleep(2)
 
+# Sets a task as complete for the user and puts it in the dictionary of completed items
 def taskCompleted():
     print("\n")
     print("Enter Task Number Completed: ")
@@ -92,6 +98,7 @@ def taskCompleted():
         print(f"Task {taskInput} not found.\n")
     time.sleep(1)
 
+# Allows the user to edit their task list
 def editTask():
     print("\n")
     print("Enter the task number you want to edit: ")
@@ -119,6 +126,7 @@ def editTask():
     time.sleep(1)
     print("\n")
 
+# Allows the user to delete a task off their task list
 def deleteTask():
     print("\n")
     print("Enter the task number you want to delete: ")
