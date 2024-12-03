@@ -127,12 +127,10 @@ def deleteTask():
 
     if taskKey in userInfo:
         print( f"Task found. Are you sure you want to delete task \"{userInfo[taskKey]}\"? Y for yes, others for no")
-        deleteTask = userInfo.pop(taskKey)
         userEdit = input()
         if userEdit == "Y":
+            deleteTask = userInfo.pop(taskKey)
             del deleteTask
-        else:
-            userInfo[taskKey] = deleteTask
     else:
         print(f"Task {taskInput} not found.\n")
     time.sleep(1)
