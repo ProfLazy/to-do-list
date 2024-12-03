@@ -84,14 +84,56 @@ def taskCompleted():
     taskKey = f"Task {taskInput}"
 
     if taskKey in userInfo:
-        completed_task = userInfo.pop(taskKey)
-        userInfo["completedTasks"].append(completed_task)
+        completedTask = userInfo.pop(taskKey)
+        userInfo["completedTasks"].append(completedTask)
         userInfo["numberCompleted"] += 1
         print(f"Task {taskInput} marked as completed.\n")
     else:
         print(f"Task {taskInput} not found.\n")
     time.sleep(1)
 
+def editTask():
+    print("\n")
+    print("Enter the task number you want to edit: ")
+    taskInput = input()
+    taskKey = f"Task {taskInput}"
+
+    if taskKey in userInfo:
+        editTask = userInfo.pop(taskKey)
+        print("Task found. Please type in the rewritted task or type EXIT to stop:")
+        userEdit = input()
+        if userEdit == "EXIT":
+            userInfo[taskKey] = editTask
+        else:
+            userInfo[taskKey] = userEdit
+    else:
+        print(f"Task {taskInput} not found.\n")
+
+    for i in range(1, userInfo["taskCounter"] + 1):
+        reorderTask = userInfo.pop(f"Task {i}")
+        userInfo[f"Task {i}"] = reorderTask
+    
+    time.sleep(1)
+    print("\n")
+
+def deleteTask():
+    print("\n")
+    print("Enter the task number you want to delete: ")
+    taskInput = input()
+    taskKey = f"Task {taskInput}"
+
+    if taskKey in userInfo:
+        deleteTask = userInfo.pop(taskKey)
+        print( f"Task found. Are you sure you want to delete task \"{userInfo[taskKey]}\"? Y for yes, others for no")
+        userEdit = input()
+        if userEdit == "Y":
+            del deleteTask
+        else:
+            userInfo[taskKey] = deleteTask
+    else:
+        print(f"Task {taskInput} not found.\n")
+    time.sleep(1)
+    print("\n")
 
 
 if __name__ == "__main__":
